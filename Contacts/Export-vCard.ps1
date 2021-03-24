@@ -6,7 +6,9 @@ function Out-vCard {
     
     Add-Content -Path $vCardPath -Value "BEGIN:VCARD"
     Add-Content -Path $vCardPath -Value "VERSION:2.1"
-    Add-Content -Path $vCardPath -Value "N:$($user.displayName)"
+    Add-Content -Path $vCardPath -Value "N:$($user.displayName)"    
+    #use this if you have Spanish characters like (ñ,á,à)
+    #Add-Content -Path $vCardPath -Value "N;LANGUAGE=es;CHARSET=Windows-1252:$($user.displayName)"
     Add-Content -Path $vCardPath -Value "ORG:$($user.department)"
     Add-Content -Path $vCardPath -Value "TITLE:$($user.jobTitle)"
     Add-Content -Path $vCardPath -Value "TEL;WORK;VOICE:$($user.mobilePhone)"
