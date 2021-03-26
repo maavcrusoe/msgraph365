@@ -13,9 +13,9 @@ function CreateAllContactsCustom {
             Write-Host "Add contact name: " $item -ForegroundColor green
             
             #Store data on var
-            $pager = $Data.extension_xxxx_pager
-            $ipPhone = $Data.extension_xxxx_ipPhone
-            $homePhone = $Data.extension_xxxx_homePhone
+            $pager = $Data.pager
+            $ipPhone = $Data.ipPhone
+            $homePhone = $Data.homePhone
             $mobilePhone = $Data.mobilePhone
             $userPrincipalName = $Data.userPrincipalName
             $displayName = $Data.displayName
