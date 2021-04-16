@@ -22,4 +22,4 @@ function DeleteContactsByCategory {
 
     }
 }
-#DeleteContactsByCategory -userId "alberto.ruiz@tunel.com" -category "business"
+#DeleteContactsByCategory -userId "user@domain.com" -category "business"
