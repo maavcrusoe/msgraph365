@@ -1,3 +1,6 @@
+#On some devices you need to use this
+#Add-Content -Path $vCardPath -Value "TEL;WORK:$($user.mobilePhone)"
+
 function Out-vCard {
     $input | ForEach-Object {
   
@@ -5,7 +8,7 @@ function Out-vCard {
     Remove-Item $vCardPath -ErrorAction SilentlyContinue
     
     Add-Content -Path $vCardPath -Value "BEGIN:VCARD"
-    Add-Content -Path $vCardPath -Value "VERSION:2.1"
+    Add-Content -Path $vCardPath -Value "VERSION:3.0"
     Add-Content -Path $vCardPath -Value "N:$($user.displayName)"    
     #use this if you have Spanish characters like (ñ,á,à)
     #Add-Content -Path $vCardPath -Value "N;LANGUAGE=es;CHARSET=Windows-1252:$($user.displayName)"
