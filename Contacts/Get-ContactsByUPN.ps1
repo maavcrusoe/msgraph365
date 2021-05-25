@@ -11,23 +11,39 @@ function Get-ContactsByUPN {
         $mobilePhone =  $contact.mobilePhone
         $businessPhones =  $contact.businessPhones
         $homePhones =  $contact.homePhones
+        $categories =  $contact.categories
+        $userPrincipalName = $contact.userPrincipalName
+        $emailAddresses = $contact.emailAddresses[0].address
 
         write-host "id:" $idContact -BackgroundColor Blue
-        write-host "Name:" $displayName -BackgroundColor Blue
-        write-host "Mobile:" $mobilePhone -BackgroundColor Blue   #largo tlf xxx xx xx xx
-        write-host "ext movil:" $businessPhones -BackgroundColor Blue  #extension movil xxx
-        write-host "ext:" $homePhones -BackgroundColor Blue       #extension fija xxxx
+        write-host "userPrincipalName:" $userPrincipalName -BackgroundColor Blue
+        write-host "emailAddresses:" $emailAddresses -BackgroundColor Blue
+        write-host "Name:" $displayName 
+        write-host "Mobile:" $mobilePhone  #largo tlf xxx xx xx xx
+        write-host "ext movil:" $businessPhones  #extension movil xxx
+        write-host "ext:" $homePhones        #extension fija xxxx
+        write-host "categories:" $categories
 
         foreach ($User in $contact) {
             $contactid = $User.id
             $userdisplayName = $User.displayName
             $userPrincipalName = $User.userPrincipalName
+            $businessPhones = $User.businessPhones
+            $mobilePhone = $User.mobilePhone
+            $homePhones = $User.homePhones
+            $categories = $User.categories
+            $emailAddresses = $User.emailAddresses
             
             #write-host $usersdisplayName,$usersmobile -ForegroundColor green
             $ListContact = [PSCustomObject]@{
                 contactid    = $contactid
                 userdisplayName    = $userdisplayName
                 userPrincipalName    = $userPrincipalName
+                businessPhones    = $businessPhones
+                mobilePhone    = $mobilePhone
+                homePhones    = $homePhones
+                categories    = $categories
+                emailAddresses    = $emailAddresses
             }      
             $Report.Add($ListContact)     
         }
