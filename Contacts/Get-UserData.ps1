@@ -16,6 +16,7 @@ function Get-UserData {
     $displayName = $Data.displayName
     $department = $Data.department 
     $jobTitle = $Data.jobTitle
+    $companyName = $Data.companyName
 
     Write-Host $displayName -ForegroundColor Yellow 
     Write-Host $userPrincipalName   -BackgroundColor Blue
@@ -25,6 +26,7 @@ function Get-UserData {
     Write-Host "HomePhone: " $homePhone -BackgroundColor Blue
     Write-Host "department: " $department -BackgroundColor Blue
     Write-Host "jobTitle: " $jobTitle -BackgroundColor Blue
+    Write-Host "Company: " $companyName -BackgroundColor Blue
 
     $UserData = [PSCustomObject]@{
         pager    = $pager
@@ -35,6 +37,7 @@ function Get-UserData {
         userPrincipalName    = $userPrincipalName
         department    = $department
         jobTitle    = $jobTitle
+        companyName    = $companyName
 
     }      
     $ContactInfo.Add($UserData)
