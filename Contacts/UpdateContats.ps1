@@ -73,3 +73,15 @@ function UpdateContactsByUPN {
     #add new contacts
     CreateNewContacts -userId $userId -LocalContacts $LocalContacts 
 }
+
+
+function UpdateAllContacts {
+    Write-host "Updating All contacts to: "
+    $var1 = Get-AllUsers 
+    $category = "empresa"
+    
+    foreach ($item in $var1.userPrincipalName) {
+        write-host $item
+        UpdateContactsByUPN -userId $item
+    }
+}
