@@ -77,7 +77,7 @@ function StartMenu {
 function QueryFunction {
     param ($selection)
     $prompt = Read-Host -Prompt "Please enter username to take action"
-    $domain = "@tunel.com"
+    $domain = "@domain.com"
     $userId = $prompt + $domain
 
     Write-Host $userId -fore blue
