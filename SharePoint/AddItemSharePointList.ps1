@@ -1,4 +1,5 @@
-#inserta en la lista de SPO los valores que le pasemos
+#insert into a SharePoint List
+#be carefull if you have a SPList in a Group check $url
 function AddItemSPO {
   param ($site, $list, $idgroup, $value)
   
