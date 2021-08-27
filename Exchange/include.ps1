@@ -57,8 +57,8 @@ function ConnectO365v2 {
 
     Import-Module MSOnline
     #$UserCredential = Get-Credential
-    $upn = "maavtest@amadipesment.org"
-    $sUserName="maavtest@amadipesment.org"
+    $upn = "user@domain.org"
+    $sUserName="user@domain.org"
     $Password = ConvertTo-SecureString -String "" -AsPlainText -Force
     $UserCredential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $sUserName, $Password
     
@@ -75,8 +75,8 @@ function ConnectO365maav {
     Import-Module MSOnline
 
     #declare variables
-    $upn = "maavtest@amadipesment.org"
-    $sUserName="maavtest@amadipesment.org"
+    $upn = "user@domain.org"
+    $sUserName="user@domain.org"
     $Password = ConvertTo-SecureString -String "" -AsPlainText -Force
     $cred = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $sUserName, $Password
 
@@ -101,8 +101,8 @@ function ConnectSecurity {
 }
 
 function ConnectSPO {
-    $adminUPN="maavtest@amadipesment.org"
-    $orgName="amadipesment.org"
+    $adminUPN="user@domain.org"
+    $orgName="domain.org"
     $userCredential = Get-Credential -UserName $adminUPN -Message "Type the password."
     Connect-SPOService -Url https://$orgName-admin.sharepoint.com -Credential $userCredential
 
@@ -110,14 +110,14 @@ function ConnectSPO {
 }
 
 function ConnectOnPremise {
-    $adminUPN = "maavtest@amadipesment.org"
+    $adminUPN = "user@domain.org"
     $cred = Get-Credential -UserName $adminUPN -Message "Type the password."
 
     Import-Module MSOnline
 
     Connect-MsolService -Credential $cred
 
-    $SessionOnPremise = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri http://newexchange.amadipesment.org/PowerShell/ -Authentication Kerberos -Credential $UserCredential
+    $SessionOnPremise = New-PSSession -ConfigurationName Microsoft.Exchange -ConnectionUri http://exchange.domain.org/PowerShell/ -Authentication Kerberos -Credential $UserCredential
     Import-PSSession $SessionOnPremise -AllowClobber
 
     $global:ConnectOnPremise = $true
