@@ -1,18 +1,4 @@
-Function addOne($intIN)
-{
-$intIN + 1
-}
-Function addTwo($intIN)
-{
-$intIN + 2
-}
-
-Function bosines {
-    Write-Host "hola"
-    return "hola"
-}
-
-#CONECXION
+#CONEXION
 #declare global variables
 $global:o365 = $false
 $global:o365v2 = $false
