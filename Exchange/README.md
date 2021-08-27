@@ -1,8 +1,10 @@
 # Exchange 365
 
-## Functions to interact with Exchange 365 with azure, teams, SPO, exchange PS modules
+Functions to interact with Exchange 365 with azure, teams, SPO, exchange PS modules
 
-## This project is used for check 365 with few clicks, you can:
+! Currently not developing
+
+*This project is used for check 365 with few clicks, you can:
 
 1. Check Users licensed or not
 2. Find Groups on Azure
@@ -14,4 +16,3 @@
 8. Get Outlook folders Items 
 9. Send commands on demand usind D (debug)
 
-## Currently not developing
