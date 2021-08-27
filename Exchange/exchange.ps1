@@ -39,8 +39,8 @@ $usuarios = Get-Mailbox $n
         #antes de importar eliminamos los contactos anitugos que posiblemente tenga importados por este script
         Search-Mailbox -identity $user.alias -searchquery 'kind:contacts AND category:"Importados"' -deletecontent -Force
 
-        #lanzamos otro comando para borrar los contactos antiguos de la categoría Mòbils AMADIP
-        Search-Mailbox -identity $user.alias -searchquery 'kind:contacts AND category:"Mòbils AMADIP"' -deletecontent -Force
+        #lanzamos otro comando para borrar los contactos antiguos de la categoría Mòbils 
+        Search-Mailbox -identity $user.alias -searchquery 'kind:contacts AND category:"Mòbils"' -deletecontent -Force
 
         Import-ContactList -CSV -CSVData ([System.IO.File]::ReadAllBytes("C:\root\ad.csv")) -Identity $user.alias -confirm:$false
 
@@ -77,9 +77,9 @@ function ImportByGroups {
         Write-Output "Eliminando categoria Importados: " $user.PrimarySmtpAddress
         Search-Mailbox -identity $user.alias -searchquery 'kind:contacts AND category:"Importados"' -deletecontent -Force
     
-        Write-Output "Eliminando Mòbils AMADIP: " $user.PrimarySmtpAddress
-        #lanzamos otro comando para borrar los contactos antiguos de la categoría Mòbils AMADIP
-        Search-Mailbox -identity $user.alias -searchquery 'kind:contacts AND category:"Mòbils AMADIP"' -deletecontent -Force
+        Write-Output "Eliminando Mòbils: " $user.PrimarySmtpAddress
+        #lanzamos otro comando para borrar los contactos antiguos de la categoría Mòbils 
+        Search-Mailbox -identity $user.alias -searchquery 'kind:contacts AND category:"Mòbils "' -deletecontent -Force
 
         #importamos contactos del ad.csv
         Write-Output "Importando contactos: " $user.PrimarySmtpAddress
@@ -124,7 +124,7 @@ function GetLicensedAndBloqued {
 
 Function ShowLastLogin {
     $prompt = Read-Host -Prompt "Please enter name of user!"
-    $user = $prompt + "@amadipesment.org"
+    $user = $prompt + "@domain.com"
     & "$PSScriptRoot\O365UserLoginHistory.ps1" -UserName $user
 }
 
@@ -153,7 +153,7 @@ function GetStadistics {
 #SIGNATURE START
 function makesignature {
     $prompt = Read-Host -Prompt "Please enter name of user to make their OWA signature!"
-    $prompt = $prompt + "@amadipesment.org"
+    $prompt = $prompt + "@domain.org"
     write-host $promt
     sigOWA -usuario $prompt
 }
@@ -169,9 +169,9 @@ function sigOWA{
     #$fb = "https://icon-icons.com/icons2/1/PNG/32/social_facebook_fb_35.png"
     #$tw = "https://icon-icons.com/icons2/1/PNG/32/social_Twitter_38.png"
     #$ig = "https://icon-icons.com/icons2/1/PNG/32/social_instagram_3.png"
-    $telegram = "https://amadipesment.org/firmas/telegram.png"
-    $in = "https://amadipesment.org/firmas/in.png"
-    $yt = "https://amadipesment.org/firmas/yt.png"
+    $telegram = "https://domain.com/signature/x.png"
+    $in = "https://domain.com/signature/x.png"
+    $yt = "https://domain.com/signature/x.png"
 
     #declare default url's
     #@esment
@@ -182,9 +182,9 @@ function sigOWA{
     #$urlFBep = "https://www.facebook.com/EsmentEscolaProfessional/"
     #$urlTWep = "https://twitter.com/EsmentEscola"
     #$urlIGep = "https://www.instagram.com/esmentescola/"
-    $urlLikedIn = "https://www.linkedin.com/company/amadip-esment/"
-    $urlTelegram = "https://t.me/esment"
-    $urlYoutube = "https://www.youtube.com/channel/UCoyuanl0iZiO7tgMixZ6Syg"
+    $urlLikedIn = "https://domain.com/signature/x.png"
+    $urlTelegram = "https://domain.com/signature/x.png"
+    $urlYoutube = "https://domain.com/signature/x.png"
 
     #Create the actuall file
     #if (!(Test-Path -Path $ExportFolder)){ mkdir $ExportFolder }
@@ -193,7 +193,7 @@ function sigOWA{
     $Email=Get-MsolUser -UserPrincipalName $usuario | Select-Object -property proxyAddresses -Expand proxyAddresses | Where {$_ -clike "SMTP:*"}
     
     $UserPrincipalName = $user.UserPrincipalName
-    $UserPrincipalName = $UserPrincipalName -replace "@amadipesment.org",""
+    $UserPrincipalName = $UserPrincipalName -replace "@domain.org",""
     $DisplayName=$user.DisplayName;
     $FirstName=$user.FirstName;
     $LastName=$user.LastName;
@@ -214,7 +214,7 @@ function sigOWA{
     #if departments.. save var logo    
     if ([string]::IsNullOrEmpty($Department)) { #CAMPO DEPARTMENT NULL
         write-host "Firma Esment" -ForegroundColor Yellow
-        $logo = "https://amadipesment.org/firmas/Esment1.png"
+        $logo = "https://domain.com/signature/x.png"
         #if is empty add to var username, and later send a email
         $msg = $Email
          
@@ -226,65 +226,16 @@ function sigOWA{
         write-host $logo
     }elseif ($Department -eq "Escola") { #ESCOLA
         write-host "Firma Escola" -ForegroundColor Blue
-        $logo = "https://amadipesment.org/firmas/Esment2.png"
+        $logo = "https://domain.com/signature/x.png"
         write-host $logo
     }elseif ($Department -eq "Informatica") { #INFORMATICA
         write-host "Firma Informatica" -ForegroundColor Cyan
-        $logo = "https://amadipesment.org/firmas/Esment1.png"
+        $logo = "https://domain.com/signature/x.png"
         write-host $logo
-    }elseif ($Department -eq "Alimentacio") { #ALIMENTACIO
-        write-host "Firma ALIMENTACIO" -ForegroundColor DarkYellow
-        $logo = "https://amadipesment.org/firmas/EsmentAlimentacio.png"
-        write-host $logo
-    }elseif ($Department -eq "Restauración") { #ALIMENTACIO
-        write-host "Firma ALIMENTACIO" -ForegroundColor DarkYellow
-        $logo = "https://amadipesment.org/firmas/EsmentAlimentacio.png"
-        write-host $logo
-    }elseif ($Department -eq "EE") { #ESCOLA PROFESIONAL
-        write-host "Firma ESMENT ESCOLA PROFESIONAL" -ForegroundColor Blue
-        $logo = "https://amadipesment.org/firmas/EsmentEscola.png"
-        write-host $logo
-    }elseif ($Department -eq "EsmentEscola") { #ESCOLA PROFESIONAL
-        write-host "Firma ESMENT ESCOLA PROFESIONAL" -ForegroundColor Blue
-        $logo = "https://amadipesment.org/firmas/EsmentEscola.png"
-        write-host $logo
-    }elseif ($Department -eq "TAS") { #ESCOLA PROFESIONAL
-        write-host "Firma TAS" -ForegroundColor Blue
-        $logo = "https://amadipesment.org/firmas/EsmentEscola.png"
-        write-host $logo
-    }elseif ($Department -eq "Impremta") { #IMPREMTA
-        write-host "Firma IMPREMTA" -ForegroundColor red
-        $logo = "https://amadipesment.org/firmas/EsmentImpremta.png"
-        write-host $logo
-    }elseif ($Department -eq "Jardineria") { #JARDINERIA
-        write-host "Firma JARDINERIA" -ForegroundColor Green
-        $logo = "https://amadipesment.org/firmas/EsmentJardineria.png"
-        write-host $logo
-    }elseif ($Department -eq "Audiovisuals") { #AUDIOVISUALS
-        write-host "Firma AUDIOVUSUALS" -ForegroundColor DarkYellow
-        $logo = "https://amadipesment.org/firmas/Esment1.png"
-        write-host $logo
-    }elseif ($Department -eq "Infancia") { #INFANCIA
-        write-host "Firma ESMENT INFANCIA" -ForegroundColor DarkYellow
-        $logo = "https://amadipesment.org/firmas/Esment1.png"
-        write-host $logo
-    }elseif ($Department -eq "esmentguies") { #ESMENT GUIES
-        write-host "Firma ESMENT GUIES" -ForegroundColor DarkYellow
-        $logo = "https://amadipesment.org/firmas/Esment1.png"
-        write-host $logo
-    }elseif ($Department -eq "Serveis") { #SERVEIS
-        write-host "Firma ESMENT SERVEIS" -ForegroundColor DarkYellow
-        $logo = "https://amadipesment.org/firmas/EsmentServeis.png"
-        write-host $logo
-    }elseif ($Department -eq "Netetja") { #Netetja
-        write-host "Firma ESMENT SERVEIS" -ForegroundColor DarkYellow
-        $logo = "https://amadipesment.org/firmas/EsmentServeis.png"
-        write-host $logo
-    }
-       
+
     else { #DEFAULT LOGO ESMENT 
         write-host "DEFAULT" -ForegroundColor red
-        $logo = "https://amadipesment.org/firmas/Esment1.png"
+        $logo = "https://domain.com/signature/x.png"
     }
     Write-Host "----------------------------------------------"
     Write-Host "Componemos firma:" -ForegroundColor Green
