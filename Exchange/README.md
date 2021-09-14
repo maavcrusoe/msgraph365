@@ -14,5 +14,5 @@ Functions to interact with Exchange 365 with azure, teams, SPO, exchange PS modu
 6. Set OWA signature
 7. Get stadistics
 8. Get Outlook folders Items 
-9. Send commands on demand usind D (debug)
+9. Send commands on demand using D (debug)
 
