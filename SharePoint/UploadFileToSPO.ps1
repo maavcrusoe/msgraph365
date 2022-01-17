@@ -17,6 +17,13 @@ function GetMSGraphToken {
 
 GetMSGraphToken
 
+function LogMessage {
+    param([string]$Message)
+    
+    ((Get-Date).ToString() + " - " + $Message) >> $LogFile;
+}
+
+
 function uploadFileSPO {
     param ($fileInBytes, $filename, $remotePath)
     $headers = @{
@@ -30,6 +37,9 @@ function uploadFileSPO {
     
     if (!$response.webUrl){
         write-host "Problem uploading.." -ForegroundColor Red
+        LogMessage -Message " $($remotePath) "
+        LogMessage -Message " $($path) "
+        LogMessage -Message "  $($filename) "
     }else {
         Write-host "Upload completed!" -ForegroundColor Green
         Write-host $response.webUrl -ForegroundColor Green
