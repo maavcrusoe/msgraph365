@@ -11,7 +11,7 @@ function Get-ContactsByUPN {
     $apiUrl = "https://graph.microsoft.com/v1.0/users/$userId/contacts?`$top=1000" #test
     Try {
         $Data = Invoke-RestMethod -Headers @{Authorization = "Bearer $($global:TokenResponse.access_token)"} -Uri $apiUrl -Method Get
-        #$Contacts = ($Data | Select-Object Value).Value 
+        $Contacts = ($Data | Select-Object Value).Value 
         #debug
         #$Contacts | Out-GridView
            
