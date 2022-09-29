@@ -29,6 +29,7 @@ Save your time SysAdmin and keep your GAL updated!
 - [x] Export formated contacts easy to import in low android versions (useful with MDM and users without 365 license)
 - [x] Token refresh every 60min
 - [x] Ignore user list 
+- [x] GetUserData with | outpud-gridview useful for view all contacts
 - [x] /debug you can execute any funcion individually or send custom querys to MS Graph using current Token
 - [x] Write Log details when you start the program
 
