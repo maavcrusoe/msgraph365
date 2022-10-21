@@ -3,6 +3,11 @@
 Sync all Active Directory users that have mobile to all users in your company using MS Graph API. Easy to use and free!
 Save your time SysAdmin and keep your GAL updated!
 
+<p align="center">
+  <img  src="https://github.com/maavcrusoe/msgraph365/blob/main/Contacts/start.png">
+</p>
+
+
 ## Steps
 
 1. Create an Business APP in your Azure AD Portal
