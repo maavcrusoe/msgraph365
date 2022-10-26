@@ -1,7 +1,7 @@
 # Application (client) ID, tenant Name and secret
-$clientID = "44f9f4f9-021e-4868-b5ba-5d6fd83949c4"
-$tenantName = "tunelcom.onmicrosoft.com"
-$clientSecret = "e5PkY_9DNL1azY34n~.IuJ-Tmt2-_4q2RP"
+$clientID = "xxxxxx"
+$tenantName = "tenant.onmicrosoft.com"
+$clientSecret = "xxxxxx"
 $resource = "https://graph.microsoft.com/"
 $LogFile = "C:\Log\Contactos.txt"
 
