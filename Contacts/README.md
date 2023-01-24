@@ -9,13 +9,13 @@ Save your time SysAdmin and keep your GAL updated!
 
 
 ## Steps
-
-1. Create an Business APP in your Azure AD Portal
-2. Edit local variables using your business app data
+1. Create file with all funtcions import at line 3 > "Import-Module $PSScriptRoot\msgraph.ps1 -Force"
+2. Create an Business APP in your Azure AD Portal
+3. Edit local variables using your business app data
    1. $clientSecret
    1. $clientID
    1. $tenantName
-3. Start ./menuGraph.ps1
+4. Start ./menuGraph.ps1
 
 ## Tasks
 
